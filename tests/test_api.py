@@ -53,3 +53,29 @@ def test_evidence_contains_document_section_and_chunk():
 def test_validation():
     response = client.post("/ask", json={"question": "x"})
     assert response.status_code == 422
+
+
+def test_analytics_overview_returns_only_corpus_grounded_metrics():
+    response = client.get("/analytics/overview")
+    payload = response.json()
+
+    assert response.status_code == 200
+    assert payload["synthetic"] is True
+    assert payload["available_periods"] == ["Q3 2025"]
+    assert payload["historical_series_available"] is False
+    assert len(payload["metrics"]) >= 5
+    assert all(metric["source"] and metric["section"] and metric["chunk_id"] and metric["excerpt"] for metric in payload["metrics"])
+
+
+def test_analytics_compare_does_not_invent_missing_period_data():
+    response = client.post(
+        "/analytics/compare",
+        json={"period_a": "Q2 2025", "period_b": "Q3 2025"},
+    )
+    payload = response.json()
+
+    assert response.status_code == 200
+    assert payload["status"] == "insufficient_history"
+    assert payload["comparison"] is None
+    assert payload["available_periods"] == ["Q3 2025"]
+    assert "solo contiene información de Q3 2025" in payload["message"]
