@@ -113,7 +113,7 @@ def _financial_summary_answer(evidence: list[dict[str, Any]]) -> str:
         f"En rentabilidad, el ROE fue de {found['ROE']}% y el ROA de {found['ROA']}%. "
         "En conjunto, estos indicadores describen escala de operación, crecimiento de cartera, calidad crediticia y rentabilidad; "
         "por sí solos no demuestran relaciones causales entre crecimiento, morosidad y utilidades. "
-        "La documentación disponible cubre Q3 2025 y no permite establecer tendencias intertrimestrales. "
+        "La documentación disponible cubre únicamente Q3 2025; por tanto, no permite establecer tendencias intertrimestrales ni calcular variaciones entre trimestres. "
         f"Fuentes: {sources}."
     )
 
