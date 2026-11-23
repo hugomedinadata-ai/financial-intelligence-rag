@@ -109,11 +109,12 @@
     });
   };
 
-  const renderResponse = (payload, elapsed) => {
+  const renderResponse = (payload, elapsed, userQuestion) => {
     const answerText = typeof payload.answer === "string" ? payload.answer : "El servicio no devolvió una respuesta legible.";
     const evidence = Array.isArray(payload.evidence_fragments) ? payload.evidence_fragments : (Array.isArray(payload.sources) ? payload.sources : []);
     const isAbstention = payload.model === "abstention" || /no encontr[eé] evidencia suficiente/i.test(answerText);
-    const confirmsUnavailable = /no publica un precio objetivo|no se encontr[oó] un precio objetivo/i.test(answerText);
+    const asksPriceTarget = /precio objetivo|price target|precio de la acci[oó]n.*objetivo/i.test(userQuestion || "");
+    const confirmsUnavailable = asksPriceTarget && /no publica un precio objetivo|no se encontr[oó] un precio objetivo/i.test(answerText);
     const hasEvidence = evidence.length > 0;
     const outcomeTitle = confirmsUnavailable
       ? "Dato no publicado"
@@ -185,7 +186,7 @@
         const detail = typeof payload.detail === "string" ? payload.detail : "El servicio respondió con HTTP " + response.status + ".";
         throw new Error(detail);
       }
-      renderResponse(payload, Math.round(performance.now() - started));
+      renderResponse(payload, Math.round(performance.now() - started), text);
     } catch (error) {
       responseCard.hidden = false;
       responseCard.dataset.kind = "error";
