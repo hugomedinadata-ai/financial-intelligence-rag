@@ -12,3 +12,27 @@
 
 /* Respect the native hidden state despite component display rules */
 .evidence-empty[hidden]{display:none!important}
+
+
+/* Cross-document financial analytics */
+.analytics-section{margin-top:18px;padding:19px 20px 16px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(145deg,#132239,#101c2e)}
+.analytics-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:14px}
+.analytics-heading h2{font:650 17px var(--display);margin:4px 0}
+.analytics-heading p{font-size:10px;color:#91a3ba;margin:0}
+.analytics-period{font-size:9px;color:var(--teal);white-space:nowrap}
+.analytics-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.analytics-metric{min-width:0;padding:11px 12px;border:1px solid rgba(166,190,218,.13);border-radius:8px;background:rgba(8,20,35,.42)}
+.analytics-metric-name{display:block;color:#93a6bd;font-size:9px}
+.analytics-metric-value{display:block;margin:5px 0;font:700 19px var(--display);color:#e9f3fb}
+.analytics-metric small{display:block;color:#70859e;font-size:8px;line-height:1.45;overflow-wrap:anywhere}
+.analytics-placeholder{grid-column:1/-1;color:#91a3ba;font-size:10px;padding:12px}
+.comparison-strip{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:12px;padding:12px 13px;border:1px solid rgba(214,183,122,.18);border-radius:8px;background:rgba(214,183,122,.045)}
+.comparison-strip>div{min-width:0}
+.comparison-kicker{display:block;color:var(--gold);font-size:8px;letter-spacing:.14em;margin-bottom:4px}
+.comparison-strip strong{font:600 11px var(--display);color:#e4ebf3}
+.comparison-strip p{margin:4px 0 0;color:#9aabc0;font-size:9px;line-height:1.5}
+.comparison-button{flex:none;border:1px solid rgba(101,219,197,.28);border-radius:7px;background:rgba(101,219,197,.08);color:#a9e7da;padding:9px 11px;font-size:9px}
+.comparison-button:hover{border-color:var(--teal);background:rgba(101,219,197,.13)}
+.comparison-button:disabled{opacity:.55;cursor:wait}
+@media(max-width:900px){.analytics-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.analytics-section{padding:14px 12px}.analytics-heading{display:block}.analytics-period{display:block;margin-top:8px}.analytics-metric-value{font-size:17px}.comparison-strip{align-items:flex-start;flex-direction:column}.comparison-button{width:100%}}
