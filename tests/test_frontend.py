@@ -44,3 +44,11 @@ def test_frontend_distinguishes_grounded_unavailability_from_missing_evidence():
     assert "Evidencia encontrada: el dato no está publicado" in script
     assert "Abstención: la evidencia no permite determinar el dato" in script
     assert '"Evidencia insuficiente"' in script
+
+
+def test_evidence_empty_state_is_hidden_when_sources_exist():
+    script = client.get("/static/app.js").text
+    css = client.get("/static/styles.css").text
+
+    assert '"Selecciona una evidencia"' in script
+    assert '.evidence-empty[hidden]{display:none!important}' in css
