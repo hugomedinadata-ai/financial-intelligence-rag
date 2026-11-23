@@ -79,3 +79,21 @@ def test_analytics_compare_does_not_invent_missing_period_data():
     assert payload["comparison"] is None
     assert payload["available_periods"] == ["Q3 2025"]
     assert "solo contiene información de Q3 2025" in payload["message"]
+
+
+def test_composite_financial_summary_covers_requested_metrics_without_price_target_noise():
+    response = client.post(
+        "/ask",
+        json={"question": "Resume el desempeño financiero de Horizonte Financiero durante Q3 2025. Integra ingresos, cartera, morosidad y rentabilidad. Identifica qué documento respalda cada indicador, explica las relaciones entre ellos y señala las limitaciones de la información disponible. No inventes datos ni tendencias históricas."},
+    )
+    payload = response.json()
+    answer = payload["answer"]
+
+    assert response.status_code == 200
+    assert payload["model"] == "extractive-fallback"
+    for expected in ["18,450", "742,300", "1.9%", "3,120", "19.6%", "2.2%"]:
+        assert expected in answer
+    assert "precio objetivo" not in answer.lower()
+    assert "no permiten establecer tendencias intertrimestrales" in answer.lower()
+    assert len(payload["evidence_fragments"]) >= 3
+    assert all("precio objetivo" not in item["text"].lower() for item in payload["evidence_fragments"])
