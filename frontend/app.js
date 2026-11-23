@@ -34,9 +34,20 @@
     const list = Array.isArray(items) ? items : [];
     sourceCount.textContent = String(list.length);
     sourcesEmpty.hidden = list.length > 0;
+    sourcesEmpty.replaceChildren();
+    const emptyIcon = document.createElement("div");
+    emptyIcon.className = "empty-graphic";
+    emptyIcon.textContent = "▤";
+    const emptyTitle = document.createElement("strong");
+    emptyTitle.textContent = "Sin evidencia recuperada";
+    const emptyText = document.createElement("p");
+    emptyText.textContent = "Las fuentes documentales aparecerán aquí después de realizar una consulta.";
+    sourcesEmpty.append(emptyIcon, emptyTitle, emptyText);
+
     list.forEach((item, index) => {
       const card = document.createElement("article");
       card.className = "source-card";
+      card.dataset.chunkId = item.chunk_id || String(index);
 
       const top = document.createElement("div");
       top.className = "source-top";
@@ -47,7 +58,7 @@
       const titleWrap = document.createElement("div");
       const title = document.createElement("div");
       title.className = "source-title";
-      title.textContent = item.title || item.document || "Documento sin título";
+      title.textContent = item.title || item.document || item.source || "Documento sin título";
       const section = document.createElement("div");
       section.className = "source-section";
       section.textContent = [item.section || "Sección no especificada", item.chunk_id || ""].filter(Boolean).join(" · ");
@@ -70,11 +81,26 @@
         const excerpt = document.createElement("p");
         excerpt.textContent = fragment;
         details.append(summary, excerpt);
+        details.addEventListener("toggle", () => {
+          if (!details.open) return;
+          sources.querySelectorAll(".source-card").forEach((node) => node.classList.remove("is-selected"));
+          card.classList.add("is-selected");
+          sourcesEmpty.hidden = false;
+          sourcesEmpty.replaceChildren();
+          const selectedTitle = document.createElement("strong");
+          selectedTitle.textContent = "Evidencia seleccionada";
+          const selectedDocument = document.createElement("p");
+          selectedDocument.textContent = [item.title || item.source || "Documento", item.section || "Sección no especificada", item.chunk_id || ""].filter(Boolean).join(" · ");
+          const selectedHint = document.createElement("p");
+          selectedHint.className = "selected-evidence-text";
+          selectedHint.textContent = fragment;
+          sourcesEmpty.append(selectedTitle, selectedDocument, selectedHint);
+        });
         card.append(details);
-      } else if (item.document) {
+      } else {
         const excerpt = document.createElement("p");
         excerpt.className = "source-excerpt";
-        excerpt.textContent = "Fuente recuperada por BM25. El endpoint no devolvió el texto del fragmento.";
+        excerpt.textContent = "El servicio no devolvió el texto del fragmento.";
         card.append(excerpt);
       }
       sources.append(card);
