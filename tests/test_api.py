@@ -94,6 +94,6 @@ def test_composite_financial_summary_covers_requested_metrics_without_price_targ
     for expected in ["18,450", "742,300", "1.9%", "3,120", "19.6%", "2.2%"]:
         assert expected in answer
     assert "precio objetivo" not in answer.lower()
-    assert "no permiten establecer tendencias intertrimestrales" in answer.lower()
+    assert "no permite establecer tendencias intertrimestrales" in answer.lower()
     assert len(payload["evidence_fragments"]) >= 3
     assert all("precio objetivo" not in item["text"].lower() for item in payload["evidence_fragments"])
