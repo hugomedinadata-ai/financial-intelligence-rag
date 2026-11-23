@@ -9,8 +9,8 @@ def test_revenue():
 def test_imor():
  r=client.post("/ask",json={"question":"¿Cuál fue el índice de morosidad?"})
  assert r.status_code==200 and "1.9%" in r.json()["answer"]
-def test_abstention():
+def test_disclosed_absence_of_target_price():
  r=client.post("/ask",json={"question":"¿Cuál es el precio objetivo para 2026?"})
- assert r.status_code==200 and "No encontré evidencia suficiente" in r.json()["answer"]
+ assert r.status_code==200 and "no publica un precio objetivo" in r.json()["answer"].lower()
 def test_validation():
  r=client.post("/ask",json={"question":"x"});assert r.status_code==422
