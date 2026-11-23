@@ -52,3 +52,15 @@ def test_evidence_empty_state_is_hidden_when_sources_exist():
 
     assert '"Selecciona una evidencia"' in script
     assert '.evidence-empty[hidden]{display:none!important}' in css
+
+
+def test_analytics_workspace_and_period_validation_are_connected():
+    page = client.get("/").text
+    script = client.get("/static/app.js").text
+    css = client.get("/static/styles.css").text
+
+    assert 'id="analytics-metrics"' in page
+    assert 'id="compare-periods"' in page
+    assert 'fetch("/analytics/overview"' in script
+    assert 'fetch("/analytics/compare"' in script
+    assert ".analytics-metrics" in css
