@@ -64,3 +64,10 @@ def test_analytics_workspace_and_period_validation_are_connected():
     assert 'fetch("/analytics/overview"' in script
     assert 'fetch("/analytics/compare"' in script
     assert ".analytics-metrics" in css
+
+
+def test_frontend_only_labels_price_target_absence_for_price_target_question():
+    script = client.get("/static/app.js").text
+
+    assert "asksPriceTarget &&" in script
+    assert "renderResponse(payload, Math.round(performance.now() - started), text)" in script
