@@ -7,6 +7,7 @@
   const latency = document.querySelector("#latency");
   const responseCard = document.querySelector("#response-card");
   const answer = document.querySelector("#answer");
+  const questionContext = document.querySelector("#question-context");
   const responseTitle = document.querySelector("#response-title");
   const responseMeta = document.querySelector("#response-meta");
   const sources = document.querySelector("#sources");
@@ -84,6 +85,7 @@
     const answerText = typeof payload.answer === "string" ? payload.answer : "El servicio no devolvió una respuesta legible.";
     const isAbstention = payload.model === "abstention" || /no encontr[eé] evidencia suficiente/i.test(answerText);
     lastAnswer = answerText;
+    questionContext.textContent = "Consulta: " + question.value.trim();
     answer.textContent = answerText;
     responseTitle.textContent = isAbstention ? "Evidencia insuficiente" : "Resultado del análisis";
     responseCard.dataset.kind = isAbstention ? "abstention" : "answer";
@@ -149,6 +151,7 @@
       responseCard.hidden = false;
       responseCard.dataset.kind = "error";
       responseTitle.textContent = "No fue posible completar la consulta";
+      questionContext.textContent = "Consulta: " + text;
       answer.textContent = error.message || "Ocurrió un error inesperado al consultar el servicio.";
       responseMeta.replaceChildren(makeMeta("Estado: error"), makeMeta("Reintenta en unos momentos"));
       renderSources([]);
