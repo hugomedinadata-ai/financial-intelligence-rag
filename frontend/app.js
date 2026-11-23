@@ -221,6 +221,69 @@
     }
   });
 
+  const analyticsGrid = document.querySelector("#analytics-metrics");
+  const analyticsPeriod = document.querySelector("#analytics-period");
+  const compareButton = document.querySelector("#compare-periods");
+  const comparisonResult = document.querySelector("#comparison-result");
+
+  const loadAnalytics = async () => {
+    try {
+      const response = await fetch("/analytics/overview", { headers: { Accept: "application/json" }, cache: "no-store" });
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      const data = await response.json();
+      analyticsPeriod.textContent = "Periodo disponible · " + (data.available_periods || []).join(", ");
+      analyticsGrid.replaceChildren();
+      (data.metrics || []).forEach((metric) => {
+        const card = document.createElement("article");
+        card.className = "analytics-metric";
+        const name = document.createElement("span");
+        name.className = "analytics-metric-name";
+        name.textContent = metric.name;
+        const value = document.createElement("strong");
+        value.className = "analytics-metric-value";
+        value.textContent = metric.value + (metric.unit === "%" ? "%" : " M");
+        const provenance = document.createElement("small");
+        provenance.textContent = [metric.title, metric.section, metric.chunk_id].filter(Boolean).join(" · ");
+        card.append(name, value, provenance);
+        analyticsGrid.append(card);
+      });
+      if (!data.metrics || !data.metrics.length) {
+        const empty = document.createElement("p");
+        empty.className = "analytics-placeholder";
+        empty.textContent = "No se encontraron indicadores estructurados en el corpus.";
+        analyticsGrid.append(empty);
+      }
+      comparisonResult.textContent = data.historical_series_available
+        ? "Hay más de un periodo disponible. Puedes solicitar una comparación."
+        : "Solo existe información de Q3 2025. No se mostrarán variaciones históricas sin documentos de otros periodos.";
+    } catch {
+      analyticsPeriod.textContent = "Indicadores no disponibles";
+      analyticsGrid.textContent = "No fue posible consultar el resumen financiero.";
+      comparisonResult.textContent = "No se pudo verificar la cobertura histórica del corpus.";
+    }
+  };
+
+  compareButton.addEventListener("click", async () => {
+    compareButton.disabled = true;
+    compareButton.textContent = "Validando…";
+    comparisonResult.textContent = "Comprobando cobertura documental para Q2 y Q3 2025…";
+    try {
+      const response = await fetch("/analytics/compare", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ period_a: "Q2 2025", period_b: "Q3 2025" })
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      comparisonResult.textContent = data.message + " Periodos disponibles: " + (data.available_periods || []).join(", ");
+    } catch {
+      comparisonResult.textContent = "No fue posible validar la comparación. Inténtalo nuevamente.";
+    } finally {
+      compareButton.disabled = false;
+      compareButton.textContent = "Validar Q2 vs Q3 2025";
+    }
+  });
+
   healthRefresh.addEventListener("click", checkHealth);
   question.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
@@ -230,4 +293,5 @@
   });
 
   checkHealth();
+  loadAnalytics();
 })();
