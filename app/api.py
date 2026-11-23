@@ -23,6 +23,48 @@ app = FastAPI(title="Financial Intelligence RAG Demo", version="1.1.0")
 class AskRequest(BaseModel):
     question: str = Field(min_length=3, max_length=1500)
 
+class CompareRequest(BaseModel):
+    period_a: str = Field(min_length=3, max_length=30)
+    period_b: str = Field(min_length=3, max_length=30)
+
+
+METRIC_PATTERNS = [
+    ("Ingresos totales", r"ingresos totales (?:por|del trimestre sumaron) ([\\d,]+) millones", "MXN millones"),
+    ("Cartera total", r"cartera total cerr[oó] en ([\\d,]+) millones", "MXN millones"),
+    ("Índice de morosidad (IMOR)", r"(?:índice de morosidad \\(IMOR\\)|IMOR) (?:fue|reportado[^.]*fue) de ([\\d.]+)%", "%"),
+    ("Utilidad neta", r"utilidad neta (?:trimestral )?fue de ([\\d,]+) millones", "MXN millones"),
+    ("ROE", r"ROE[^.]*?fue de ([\\d.]+)%", "%"),
+    ("ROA", r"ROA[^.]*?(?:ubic[oó]|se ubic[oó]) en ([\\d.]+)%", "%"),
+    ("Crecimiento anual de cartera", r"crecimiento anual de cartera fue de ([\\d.]+)%", "%"),
+]
+
+
+def _periods_in_corpus() -> list[str]:
+    corpus_text = " ".join(chunk.text for chunk in CHUNKS).lower()
+    return ["Q3 2025"] if ("tercer trimestre de 2025" in corpus_text or "q3 2025" in corpus_text) else []
+
+
+def _extract_metric_snapshot() -> list[dict[str, Any]]:
+    metrics: list[dict[str, Any]] = []
+    for label, pattern, unit in METRIC_PATTERNS:
+        for chunk in CHUNKS:
+            match = re.search(pattern, chunk.text, re.IGNORECASE)
+            if not match:
+                continue
+            metrics.append({
+                "name": label,
+                "value": match.group(1),
+                "unit": unit,
+                "period": "Q3 2025",
+                "source": chunk.doc_id,
+                "title": chunk.title,
+                "section": chunk.section,
+                "chunk_id": chunk.chunk_id,
+                "excerpt": chunk.text,
+            })
+            break
+    return metrics
+
 
 def _is_price_target_question(question: str) -> bool:
     normalized = question.lower()
@@ -156,6 +198,40 @@ def ask(payload: AskRequest):
         "evidence_fragments": evidence,
     }
 
+
+
+@app.get("/analytics/overview")
+def analytics_overview():
+    metrics = _extract_metric_snapshot()
+    return {
+        "status": "ok",
+        "entity": "Horizonte Financiero, S.A.",
+        "synthetic": True,
+        "available_periods": _periods_in_corpus(),
+        "metrics": metrics,
+        "documents_consulted": sorted({item["source"] for item in metrics}),
+        "historical_series_available": len(_periods_in_corpus()) > 1,
+    }
+
+
+@app.post("/analytics/compare")
+def analytics_compare(payload: CompareRequest):
+    available = _periods_in_corpus()
+    requested = [payload.period_a.strip().upper(), payload.period_b.strip().upper()]
+    if requested[0] == requested[1]:
+        return {
+            "status": "invalid_comparison",
+            "message": "Selecciona dos periodos distintos para realizar una comparación.",
+            "available_periods": available,
+            "comparison": None,
+        }
+    return {
+        "status": "insufficient_history",
+        "message": "No es posible comparar los periodos solicitados: el corpus disponible solo contiene información de Q3 2025. Se necesitan datos documentales de ambos periodos.",
+        "available_periods": available,
+        "requested_periods": requested,
+        "comparison": None,
+    }
 
 app.mount("/static", StaticFiles(directory=ROOT / "frontend"), name="static")
 
