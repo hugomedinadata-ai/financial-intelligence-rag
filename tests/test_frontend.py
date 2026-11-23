@@ -8,7 +8,7 @@ client = TestClient(app)
 def test_dashboard_serves_financial_research_workspace():
     response = client.get("/")
     assert response.status_code == 200
-    assert "Financial Research" in response.text
+    assert "Financial <span>Research</span>" in response.text
     assert "SYNTHETIC DATA" in response.text
     assert 'id="ask-form"' in response.text
     assert 'id="evidence"' in response.text
@@ -34,4 +34,4 @@ def test_frontend_exposes_evidence_and_abstention_states():
     assert 'id="sources"' in page
     assert "evidence_fragments" in script
     assert "abstention" in script
-    assert 'data-kind = "error"' in script
+    assert 'responseCard.dataset.kind = "error"' in script
