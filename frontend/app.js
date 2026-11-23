@@ -39,9 +39,11 @@
     emptyIcon.className = "empty-graphic";
     emptyIcon.textContent = "▤";
     const emptyTitle = document.createElement("strong");
-    emptyTitle.textContent = "Sin evidencia recuperada";
+    emptyTitle.textContent = list.length ? "Selecciona una evidencia" : "Sin evidencia recuperada";
     const emptyText = document.createElement("p");
-    emptyText.textContent = "Las fuentes documentales aparecerán aquí después de realizar una consulta.";
+    emptyText.textContent = list.length
+      ? "Selecciona «Ver fragmento de evidencia» para inspeccionar el documento, la sección y el fragmento."
+      : "Las fuentes documentales aparecerán aquí después de realizar una consulta.";
     sourcesEmpty.append(emptyIcon, emptyTitle, emptyText);
 
     list.forEach((item, index) => {
