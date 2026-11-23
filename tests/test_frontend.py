@@ -35,3 +35,12 @@ def test_frontend_exposes_evidence_and_abstention_states():
     assert "evidence_fragments" in script
     assert "abstention" in script
     assert 'responseCard.dataset.kind = "error"' in script
+
+
+def test_frontend_distinguishes_grounded_unavailability_from_missing_evidence():
+    script = client.get("/static/app.js").text
+
+    assert '"Dato no publicado"' in script
+    assert "Evidencia encontrada: el dato no está publicado" in script
+    assert "Abstención: la evidencia no permite determinar el dato" in script
+    assert '"Evidencia insuficiente"' in script
