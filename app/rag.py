@@ -1,1 +1,57 @@
-IiIiU21hbGwsIHRyYW5zcGFyZW50IEJNMjUgcmV0cmlldmFsIHBpcGVsaW5lIGZvciB0aGUgcHVibGljIGRlbW8uIiIiCmZyb20gX19mdXR1cmVfXyBpbXBvcnQgYW5ub3RhdGlvbnMKaW1wb3J0IG1hdGgKaW1wb3J0IHJlCmZyb20gY29sbGVjdGlvbnMgaW1wb3J0IENvdW50ZXIKZnJvbSBkYXRhY2xhc3NlcyBpbXBvcnQgZGF0YWNsYXNzCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aAoKVE9LRU5fUkUgPSByZS5jb21waWxlKHIiW2EtesOhw6nDrcOzw7rDvMOxMC05XSsiLCByZS5JR05PUkVDQVNFKQoKCmRlZiB0b2tlbml6ZSh0ZXh0OiBzdHIpIC0+IGxpc3Rbc3RyXToKICAgIHJldHVybiBbdC5sb3dlcigpIGZvciB0IGluIFRPS0VOX1JFLmZpbmRhbGwodGV4dCldCgoKQGRhdGFjbGFzcwpjbGFzcyBDaHVuazoKICAgIGRvY19pZDogc3RyCiAgICB0aXRsZTogc3RyCiAgICBzZWN0aW9uOiBzdHIKICAgIHRleHQ6IHN0cgogICAgY2h1bmtfaWQ6IHN0cgoKCmNsYXNzIEJNMjVJbmRleDoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBjaHVua3M6IGxpc3RbQ2h1bmtdLCBrMTogZmxvYXQgPSAxLjUsIGI6IGZsb2F0ID0gMC43NSk6CiAgICAgICAgc2VsZi5jaHVua3MgPSBjaHVua3MKICAgICAgICBzZWxmLmsxID0gazEKICAgICAgICBzZWxmLmIgPSBiCiAgICAgICAgc2VsZi50b2tlbnMgPSBbdG9rZW5pemUoYy50ZXh0KSBmb3IgYyBpbiBjaHVua3NdCiAgICAgICAgc2VsZi5sZW5ndGhzID0gW2xlbih0KSBmb3IgdCBpbiBzZWxmLnRva2Vuc10KICAgICAgICBzZWxmLmF2Z2RsID0gc3VtKHNlbGYubGVuZ3RocykgLyBtYXgobGVuKHNlbGYubGVuZ3RocyksIDEpCiAgICAgICAgc2VsZi5kZjogQ291bnRlcltzdHJdID0gQ291bnRlcigpCiAgICAgICAgZm9yIHRva2VucyBpbiBzZWxmLnRva2VuczoKICAgICAgICAgICAgc2VsZi5kZi51cGRhdGUoc2V0KHRva2VucykpCgogICAgZGVmIHNlYXJjaChzZWxmLCBxdWVyeTogc3RyLCBsaW1pdDogaW50ID0gNSkgLT4gbGlzdFt0dXBsZVtDaHVuaywgZmxvYXRdXToKICAgICAgICBxdG9rZW5zID0gc2V0KHRva2VuaXplKHF1ZXJ5KSkKICAgICAgICBpZiBub3QgcXRva2VuczoKICAgICAgICAgICAgcmV0dXJuIFtdCiAgICAgICAgbiA9IGxlbihzZWxmLmNodW5rcykKICAgICAgICBzY29yZWQgPSBbXQogICAgICAgIGZvciBpLCBkb2NfdG9rZW5zIGluIGVudW1lcmF0ZShzZWxmLnRva2Vucyk6CiAgICAgICAgICAgIHRmID0gQ291bnRlcihkb2NfdG9rZW5zKQogICAgICAgICAgICBzY29yZSA9IDAuMAogICAgICAgICAgICBmb3IgdGVybSBpbiBxdG9rZW5zOgogICAgICAgICAgICAgICAgZnJlcSA9IHRmW3Rlcm1dCiAgICAgICAgICAgICAgICBpZiBub3QgZnJlcToKICAgICAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICAgICAgZGYgPSBzZWxmLmRmW3Rlcm1dCiAgICAgICAgICAgICAgICBpZGYgPSBtYXRoLmxvZygxICsgKG4gLSBkZiArIDAuNSkgLyAoZGYgKyAwLjUpKQogICAgICAgICAgICAgICAgZGVub20gPSBmcmVxICsgc2VsZi5rMSAqICgxIC0gc2VsZi5iICsgc2VsZi5iICogc2VsZi5sZW5ndGhzW2ldIC8gbWF4KHNlbGYuYXZnZGwsIDEpKQogICAgICAgICAgICAgICAgc2NvcmUgKz0gaWRmICogKGZyZXEgKiAoc2VsZi5rMSArIDEpKSAvIGRlbm9tCiAgICAgICAgICAgIGlmIHNjb3JlID4gMDoKICAgICAgICAgICAgICAgIHNjb3JlZC5hcHBlbmQoKHNlbGYuY2h1bmtzW2ldLCBzY29yZSkpCiAgICAgICAgcmV0dXJuIHNvcnRlZChzY29yZWQsIGtleT1sYW1iZGEgeDogeFsxXSwgcmV2ZXJzZT1UcnVlKVs6bGltaXRdCgoKZGVmIGxvYWRfY2h1bmtzKGRhdGFfZGlyOiBQYXRoLCBjaHVua193b3JkczogaW50ID0gMTE1LCBvdmVybGFwOiBpbnQgPSAyMCkgLT4gbGlzdFtDaHVuazpdOgogICAgY2h1bmtzOiBsaXN0W0NodW5rXSA9IFtdCiAgICBmb3IgcGF0aCBpbiBzb3J0ZWQoZGF0YV9kaXIuZ2xvYigiKi5tZCIpKToKICAgICAgICByYXcgPSBwYXRoLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKQogICAgICAgIGxpbmVzID0gcmF3LnNwbGl0bGluZXMoKQogICAgICAgIHRpdGxlID0gcGF0aC5zdGVtCiAgICAgICAgc2VjdGlvbiA9ICJHZW5lcmFsIgogICAgICAgIGJvZHlfbGluZXM6IGxpc3Rbc3RyXSA9IFtdCiAgICAgICAgZm9yIGxpbmUgaW4gbGluZXM6CiAgICAgICAgICAgIGlmIGxpbmUuc3RhcnRzd2l0aCgiIyAiKToKICAgICAgICAgICAgICAgIHRpdGxlID0gbGluZVsyOl0uc3RyaXAoKQogICAgICAgICAgICBlbGlmIGxpbmUuc3RhcnRzd2l0aCgiIyMgIik6CiAgICAgICAgICAgICAgICBpZiBib2R5X2xpbmVzOgogICAgICAgICAgICAgICAgICAgIGNodW5rcy5leHRlbmQoX3NwbGl0X3NlY3Rpb24ocGF0aC5uYW1lLCB0aXRsZSwgc2VjdGlvbiwgIlxuIi5qb2luKGJvZHlfbGluZXMpLCBjaHVua193b3Jkcywgb3ZlcmxhcCwgbGVuKGNodW5rcSkpKQogICAgICAgICAgICAgICAgICAgIGJvZHlfbGluZXMgPSBbXQogICAgICAgICAgICAgICAgc2VjdGlvbiA9IGxpbmVbMzpdLnN0cmlwKCkKICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIGJvZHlfbGluZXMuYXBwZW5kKGxpbmUpCiAgICAgICAgaWYgYm9keV9saW5lczoKICAgICAgICAgICAgY2h1bmtzLmV4dGVuZChfc3BsaXRfc2VjdGlvbihwYXRoLm5hbWUsIHRpdGxlLCBzZWN0aW9uLCAiXG4iLmpvaW4oYm9keV9saW5lcyksIGNodW5rX3dvcmRzLCBvdmVybGFwLCBsZW4oY2h1bmtzKSkpCiAgICByZXR1cm4gY2h1bmtzCgoKZGVmIF9zcGxpdF9zZWN0aW9uKGRvY19pZDogc3RyLCB0aXRsZTogc3RyLCBzZWN0aW9uOiBzdHIsIHRleHQ6IHN0ciwgc2l6ZTogaW50LCBvdmVybGFwOiBpbnQsIHN0YXJ0OiBpbnQpIC0+IGxpc3RbQ2h1bmtdOgogICAgd29yZHMgPSB0ZXh0LnNwbGl0KCkKICAgIHJlc3VsdCA9IFtdCiAgICBzdGVwID0gbWF4KHNpemUgLSBvdmVybGFwLCAxKQogICAgZm9yIG9mZnNldCBpbiByYW5nZSgwLCBsZW4od29yZHMsIHN0ZXApOgogICAgICAgIHBpZWNlID0gIiAiLmpvaW4od29yZHNbb2Zmc2V0Om9mZnNldCArIHNpemVdKS5zdHJpcCgpCiAgICAgICAgaWYgcGllY2U6CiAgICAgICAgICAgIHJlc3VsdC5hcHBlbmQoQ2h1bmsoZG9jX2lkLCB0aXRsZSwgc2VjdGlvbiwgcGllY2UsIGYie2RvY19pZH0jY2h1bmste3N0YXJ0ICsgbGVuKHJlc3VsdCkgKyAxfSIpKQogICAgcmV0dXJuIHJlc3VsdAo=
+"""Transparent BM25 retrieval for the synthetic public demo."""
+from __future__ import annotations
+import math
+import re
+from collections import Counter
+from dataclasses import dataclass
+from pathlib import Path
+TOKEN_RE=re.compile(r"[a-záéíóúñü0-9]+",re.IGNORECASE)
+def tokenize(text:str)->list[str]:
+    return [x.lower() for x in TOKEN_RE.findall(text)]
+@dataclass
+class Chunk:
+    doc_id:str
+    title:str
+    section:str
+    text:str
+    chunk_id:str
+def split_words(text:str,size:int=115,overlap:int=20)->list[str]:
+    words=text.split();step=max(1,size-overlap)
+    return [" ".join(words[i:i+size]) for i in range(0,len(words),step) if words[i:i+size]]
+def load_chunks(directory:Path)->list[Chunk]:
+    chunks=[]
+    for path in sorted(directory.glob("*.md")):
+        title=path.stem;section="General";body=[]
+        def flush():
+            for part in split_words("\n".join(body)):
+                chunks.append(Chunk(path.name,title,section,part,f"{path.stem}-{len(chunks)+1}"))
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.startswith("# "):
+                title=line[2:].strip()
+            elif line.startswith("## "):
+                if body:flush();body=[]
+                section=line[3:].strip()
+            else:body.append(line)
+        if body:flush()
+    return chunks
+class BM25Index:
+    def __init__(self,chunks:list[Chunk],k1:float=1.5,b:float=0.75):
+        self.chunks=chunks;self.k1=k1;self.b=b
+        self.tokens=[tokenize(c.text) for c in chunks]
+        self.lengths=[len(t) for t in self.tokens]
+        self.avgdl=sum(self.lengths)/max(len(self.lengths),1)
+        self.df=Counter(term for terms in self.tokens for term in set(terms))
+    def search(self,query:str,limit:int=5):
+        terms=set(tokenize(query))
+        if not terms:return []
+        n=len(self.chunks);ranked=[]
+        for i,tokens in enumerate(self.tokens):
+            tf=Counter(tokens);score=0.0
+            for term in terms:
+                freq=tf[term]
+                if not freq:continue
+                idf=math.log(1+(n-self.df[term]+0.5)/(self.df[term]+0.5))
+                denom=freq+self.k1*(1-self.b+self.b*self.lengths[i]/max(self.avgdl,1))
+                score+=idf*freq*(self.k1+1)/denom
+            if score>0:ranked.append((self.chunks[i],score))
+        return sorted(ranked,key=lambda x:x[1],reverse=True)[:limit]
