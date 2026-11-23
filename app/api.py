@@ -1,1 +1,43 @@
-ZnJvbSBfX2Z1dHVyZV9fIGltcG9ydCBhbm5vdGF0aW9ucwppbXBvcnQgb3MKZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmZyb20gdHlwaW5nIGltcG9ydCBBbnkKZnJvbSBkb3RlbnYgaW1wb3J0IGxvYWRfZG90ZW52CmZyb20gZmFzdGFwaSBpbXBvcnQgRmFzdEFQSQpmcm9tIGZhc3RhcGkuc3RhdGljZmlsZXMgaW1wb3J0IFN0YXRpY0ZpbGVzCmZyb20gcHlkYW50aWMgaW1wb3J0IEJhc2VNb2RlbCwgRmllbGQKZnJvbSBhcHAucmFnIGltcG9ydCBCTTI1SW5kZXgsIGxvYWRfY2h1bmtzCgpST09UID0gUGF0aChfX2ZpbGVfXykucmVzb2x2ZSgpLnBhcmVudHNbMV0KbG9hZF9kb3RlbnYoUk9PVCAvICIuZW52IikKQ0hVTktTID0gbG9hZF9jaHVua3MoUk9PVCAvICJkYXRhIiAvICJkb2N1bWVudHMiKQpJTkRFWCA9IEJNMjVJbmRleChDSFVOS1MpCmFwcCA9IEZhc3RBUEkodGl0bGU9IkZpbmFuY2lhbCBJbnRlbGxpZ2VuY2UgUkFHIERlbW8iLCB2ZXJzaW9uPSIxLjAuMCIsIGRlc2NyaXB0aW9uPSJEZW1vIHDDumJsaWNhIGNvbiBkYXRvcyBzaW50w6l0aWNvcyIpCgpjbGFzcyBBc2tSZXF1ZXN0KEJhc2VNb2RlbCk6CiAgICBxdWVzdGlvbjogc3RyID0gRmllbGQobWluX2xlbmd0aD0zLCBtYXhfbGVuZ3RoPTE1MDApCgoKZGVmIGdlbmVyYXRlX2Fuc3dlcihxdWVzdGlvbjogc3RyLCBldmlkZW5jZTogbGlzdFtkaWN0W3N0ciwgQW55XV0pIC0+IHR1cGxlW3N0ciwgc3RyXToKICAgIGFwaV9rZXkgPSBvcy5nZXRlbnYoIk9QRU5BSV9BUElfS0VZIiwgIiIpLnN0cmlwKCkKICAgIGlmIGFwaV9rZXkgYW5kIGV2aWRlbmNlOgogICAgICAgIHRyeToKICAgICAgICAgICAgZnJvbSBvcGVuYWkgaW1wb3J0IE9wZW5BSQogICAgICAgICAgICBjbGllbnQgPSBPcGVuQUkoYXBpX2tleT1hcGlfa2V5KQogICAgICAgICAgICBjb250ZXh0ID0gIlxuXG4iLmpvaW4oZiJbe2dbJ3NvdXJjZSddfSB8IHNlY2Npw7NuOiB7ZVsnc2VjdGlvbiddfV0ge2VbJ3RleHQnXX0iIGZvciBlIGluIGV2aWRlbmNlKQogICAgICAgICAgICByZXNwb25zZSA9IGNsaWVudC5jaGF0LmNvbXBsZXRpb25zLmNyZWF0ZSgKICAgICAgICAgICAgICAgIG1vZGVsPW9zLmdldGVudigiT1BFTkFJX01PREVMIiwgImdwdC00LjEtbWluaSIpLAogICAgICAgICAgICAgICAgdGVtcGVyYXR1cmU9MCwKICAgICAgICAgICAgICAgIG1lc3NhZ2VzPVsKICAgICAgICAgICAgICAgICAgICB7InJvbGUiOiAic3lzdGVtIiwgImNvbnRlbnQiOiAiUmVzcG9uZGUgZW4gZXNwYcOxb2wgdXNhbmRvIGV4Y2x1c2l2YW1lbnRlIGxhIGV2aWRlbmNpYS4gU2kg bm8gZXN0w6EgcmVzcGFsZGFkbywgZGlxdWUgcXVlIG5vIGhheSBl dmlkZW5jaWEgc3VmaWNpZW50ZS4gTm8gaW52ZW50ZXMgY2lmcmFzLiBDaXRhIGRvY3VtZW50byB5IHNlY2Npw7NuLiJ9LAogICAgICAgICAgICAgICAgICAgIHsidHlwZSI6ICJ0ZXh0IiwgInRleHQiOiBmIlByZWd1bnRhOiB7cXVlc3Rpb259XG5cbkV2aWRlbmNpYTpcblxue2NvbnRleHR9In0sCiAgICAgICAgICAgICAgICBdLAogICAgICAgICAgICApCiAgICAgICAgICAgIHJldHVybiByZXNwb25zZS5jaG9pY2VzWzBdLm1lc3NhZ2UuY29udGVudCBvciAiTm8gZnVlIHBvc2libGUgZ2VuZXJhciB1bmEgcmVzcHVlc3RhLiIsICJvcGVuYWkiCiAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICAgICAgcGFzcwogICAgaWYgbm90IGV2aWRlbmNlOgogICAgICAgIHJldHVybiAiTm8gZW5jb250csOpIGV2aWRlbmNpYSBzdWZpY2llbnRlIGVuIGxvcyBkb2N1bWVudG9zIGRpc3BvbmlibGVzIHBhcmEgcmVzcG9uZGVyIGNvbiBjb25maWFuemEuIiwgImFic3RlbnRpb24iCiAgICBzbmlwcGV0cyA9IFtmIntlWyd0ZXh0J119IChGdWVudGU6IHtlWydzb3VyY2UnXX0sIHNlY2Npw7NuOiB7ZVsnc2VjdGlvbiddfSkuIiBmb3IgZSBpbiBldmlkZW5jZVs6Ml1dCiAgICByZXR1cm4gIkxhIGV2aWRlbmNpYSBkb2N1bWVudGFsIG3DoXMgcmVsZXZhbnRlIGluZGljYToiICsgIlxuXG4iLmpvaW4oc25pcHBldHMpLCAiZXh0cmFjdGl2ZS1mYWxsYmFjayIKCkBhcHAuZ2V0KCIvaGVhbHRoIikKZGVmIGhlYWx0aCgpOgogICAgcmV0dXJuIHsic3RhdHVzIjogIm9rIiwgImRvY3VtZW50cyI6IGxlbih7Yy5kb2NfaWQgZm9yIGMgaW4gQ0hVTktTfSksICJjaHVua3MiOiBsZW4oQ0hVTktTKSwgInJldHJpZXZhbCI6ICJCTTI1In0KCkBhcHAucG9zdCgiL2FzayIpCmRlZiBhc2socGF5bG9hZDogQXNrUmVxdWVzdCk6CiAgICBoaXRzID0gSU5ERVguc2VhcmNoKHBheWxvYWQucXVlc3Rpb24sIGxpbWl0PTUpCiAgICB0b3Bfc2NvcmUgPSBoaXRzWzBdWzFdIGlmIGhpdHMgZWxzZSAwCiAgICBldmlkZW5jZSA9IFt7InNvdXJjZSI6IGMuZG9jX2lkLCAidGl0bGUiOiBjLnRpdGxlLCAic2VjdGlvbiI6IGMuc2VjdGlvbiwgImNodW5rX2lkIjogYy5jaHVua19pZCwgInNjb3JlIjogcm91bmQoc2NvcmUsIDQpLCAidGV4dCI6IGMudGV4dH0gZm9yIGMsIHNjb3JlIGluIGhpdHNdCiAgICBhbnN3ZXIsIG1vZGVsID0gZ2VuZXJhdGVfYW5zd2VyKHBheWxvYWQucXVlc3Rpb24sIGV2aWRlbmNlIGlmIHRvcF9zY29yZSA+IDAgZWxzZSBbXSkKICAgIHJldHVybiB7ImFuc3dlciI6IGFuc3dlciwgInNvdXJjZXMiOiBbeyJkb2N1bWVudCI6IGVbInNvdXJjZSJdLCAidGl0bGUiOiBlWyJ0aXRsZSJdLCAic2VjdGlvbiI6IGVbInNlY3Rpb24iXSwgInJlbGV2YW5jZV9ibTI1IjogZVsic2NvcmUiXX0gZm9yIGUgaW4gZXZpZGVuY2VdLCAibW9kZWwiOiBtb2RlbCwgInJldHJpZXZhbCI6ICJCTTI1IiwgImV2aWRlbmNlX2ZyYWdtZW50cyI6IGV2aWRlbmNlfQo=
+from __future__ import annotations
+import os
+from pathlib import Path
+from typing import Any
+from dotenv import load_dotenv
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel, Field
+from app.rag import BM25Index, load_chunks
+ROOT=Path(__file__).resolve().parents[1]
+load_dotenv(ROOT/".env")
+CHUNKS=load_chunks(ROOT/"data"/"documents")
+INDEX=BM25Index(CHUNKS)
+app=FastAPI(title="Financial Intelligence RAG Demo",version="1.0.0")
+class AskRequest(BaseModel):
+    question:str=Field(min_length=3,max_length=1500)
+def answer_question(question:str,evidence:list[dict[str,Any]])->tuple[str,str]:
+    if not evidence:return "No encontré evidencia suficiente en los documentos disponibles.","abstention"
+    key=os.getenv("OPENAI_API_KEY","").strip()
+    if key:
+        try:
+            from openai import OpenAI
+            client=OpenAI(api_key=key)
+            context="\n\n".join(f"[{e['source']} | {e['section']}] {e['text']}" for e in evidence)
+            result=client.chat.completions.create(model=os.getenv("OPENAI_MODEL","gpt-4.1-mini"),temperature=0,messages=[
+                {"role":"system","content":"Responde en español usando solo la evidencia. Si no basta, indícalo. No inventes cifras. Cita documento y sección."},
+                {"role":"user","content":f"Pregunta: {question}\n\nEvidencia:\n{context}"}])
+            return result.choices[0].message.content or "Sin respuesta.","openai"
+        except Exception:pass
+    return "La evidencia documental más relevante indica:\n\n"+"\n\n".join(f"{e['text']} (Fuente: {e['source']}, sección: {e['section']})." for e in evidence[:2]),"extractive-fallback"
+@app.get("/health")
+def health():return {"status":"ok","documents":len({c.doc_id for c in CHUNKS}),"chunks":len(CHUNKS),"retrieval":"BM25"}
+@app.post("/ask")
+def ask(payload:AskRequest):
+    hits=INDEX.search(payload.question,limit=5)
+    evidence=[{"source":c.doc_id,"title":c.title,"section":c.section,"chunk_id":c.chunk_id,"score":round(score,4),"text":c.text} for c,score in hits]
+    answer,model=answer_question(payload.question,evidence if hits and hits[0][1]>0 else [])
+    return {"answer":answer,"sources":[{"document":e["source"],"title":e["title"],"section":e["section"],"relevance_bm25":e["score"]} for e in evidence],"model":model,"retrieval":"BM25","evidence_fragments":evidence}
+app.mount("/static",StaticFiles(directory=ROOT/"frontend"),name="static")
+@app.get("/")
+def root():
+    from fastapi.responses import FileResponse
+    return FileResponse(ROOT/"frontend"/"index.html")

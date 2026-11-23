@@ -1,1 +1,7 @@
-ZmFzdGFwaT49MC4xMTAsPDEuMAp1dmljb3JuW3N0YW5kYXJkXT49MC4yNyw8MS4wCnB5ZGFudGljPj0yLjYsPDMuMApweXRob24tZG90ZW52Pj0xLjAsPDIuMApvcGVuYWk+PTEuMzAsPDMuMApweXRlc3Q+PTguMCw8OS4wCmh0dHB4Pj0wLjI3LDwxLjAK
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.27,<1.0
+pydantic>=2.6,<3.0
+python-dotenv>=1.0,<2.0
+openai>=1.30,<3.0
+pytest>=8.0,<9.0
+httpx>=0.27,<1.0
