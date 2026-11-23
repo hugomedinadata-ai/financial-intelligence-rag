@@ -29,13 +29,13 @@ class CompareRequest(BaseModel):
 
 
 METRIC_PATTERNS = [
-    ("Ingresos totales", r"ingresos totales (?:por|del trimestre sumaron) ([\\d,]+) millones", "MXN millones"),
-    ("Cartera total", r"cartera total cerr[oó] en ([\\d,]+) millones", "MXN millones"),
-    ("Índice de morosidad (IMOR)", r"(?:índice de morosidad \\(IMOR\\)|IMOR) (?:fue|reportado[^.]*fue) de ([\\d.]+)%", "%"),
-    ("Utilidad neta", r"utilidad neta (?:trimestral )?fue de ([\\d,]+) millones", "MXN millones"),
-    ("ROE", r"ROE[^.]*?fue de ([\\d.]+)%", "%"),
-    ("ROA", r"ROA[^.]*?(?:ubic[oó]|se ubic[oó]) en ([\\d.]+)%", "%"),
-    ("Crecimiento anual de cartera", r"crecimiento anual de cartera fue de ([\\d.]+)%", "%"),
+    ("Ingresos totales", r"ingresos totales por ([0-9,]+) millones", "MXN millones"),
+    ("Cartera total", r"cartera total cerr[oó] en ([0-9,]+) millones", "MXN millones"),
+    ("Índice de morosidad (IMOR)", r"índice de morosidad [(]IMOR[)] fue de ([0-9.]+)%", "%"),
+    ("Utilidad neta", r"utilidad neta trimestral fue de ([0-9,]+) millones", "MXN millones"),
+    ("ROE", r"ROE[^.]*?fue de ([0-9.]+)%", "%"),
+    ("ROA", r"ROA[^.]*?ubic[oó] en ([0-9.]+)%", "%"),
+    ("Crecimiento anual de cartera", r"crecimiento anual de cartera fue de ([0-9.]+)%", "%"),
 ]
 
 
