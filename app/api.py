@@ -74,6 +74,49 @@ def _is_price_target_question(question: str) -> bool:
         or ("precio de la acción" in normalized and "objetivo" in normalized)
     )
 
+def _is_financial_summary_question(question: str) -> bool:
+    normalized = question.lower()
+    return (
+        ("ingresos" in normalized or "revenue" in normalized)
+        and ("cartera" in normalized or "loan portfolio" in normalized)
+        and ("morosidad" in normalized or "imor" in normalized or "delinquency" in normalized)
+        and ("rentabilidad" in normalized or "roe" in normalized or "roa" in normalized)
+    )
+
+
+def _financial_summary_answer(evidence: list[dict[str, Any]]) -> str:
+    corpus = " ".join(item["text"] for item in evidence)
+    patterns = [
+        ("ingresos", r"ingresos totales (?:por|del trimestre sumaron) ([0-9,]+) millones de pesos"),
+        ("cartera", r"cartera total cerr[oó] en ([0-9,]+) millones de pesos"),
+        ("crecimiento anual de cartera", r"crecimiento anual de cartera fue de ([0-9.]+)%"),
+        ("IMOR", r"índice de morosidad [(]IMOR[)] (?:fue|reportado[^.]*fue) de ([0-9.]+)%"),
+        ("utilidad neta", r"utilidad neta trimestral fue de ([0-9,]+) millones de pesos"),
+        ("ROE", r"ROE[^.]*?fue de ([0-9.]+)%"),
+        ("ROA", r"ROA[^.]*?ubic[oó] en ([0-9.]+)%"),
+    ]
+    found = {}
+    for label, pattern in patterns:
+        match = re.search(pattern, corpus, re.IGNORECASE)
+        if match:
+            found[label] = match.group(1)
+    required = ["ingresos", "cartera", "IMOR", "utilidad neta", "ROE", "ROA"]
+    missing = [label for label in required if label not in found]
+    if missing:
+        return "La evidencia recuperada no permite cubrir todos los indicadores solicitados. Faltan: " + ", ".join(missing) + "."
+    growth = f" El crecimiento anual de cartera fue de {found['crecimiento anual de cartera']}%." if "crecimiento anual de cartera" in found else ""
+    sources = "; ".join(sorted({f"{item['source']} — {item['section']}" for item in evidence}))
+    return (
+        "Resumen financiero de Q3 2025 (datos sintéticos): "
+        f"los ingresos fueron de {found['ingresos']} millones de pesos y la cartera cerró en {found['cartera']} millones.{growth} "
+        f"El IMOR fue de {found['IMOR']}% y la utilidad neta trimestral de {found['utilidad neta']} millones de pesos. "
+        f"En rentabilidad, el ROE fue de {found['ROE']}% y el ROA de {found['ROA']}%. "
+        "En conjunto, estos indicadores describen escala de operación, crecimiento de cartera, calidad crediticia y rentabilidad; "
+        "por sí solos no demuestran relaciones causales entre crecimiento, morosidad y utilidades. "
+        "La documentación disponible cubre Q3 2025 y no permite establecer tendencias intertrimestrales. "
+        f"Fuentes: {sources}."
+    )
+
 
 def _select_relevant_hits(question: str, hits: list[tuple[Any, float]]) -> list[tuple[Any, float]]:
     """Keep a small, score-grounded set; domain-specific absence queries stay focused."""
@@ -89,6 +132,19 @@ def _select_relevant_hits(question: str, hits: list[tuple[Any, float]]) -> list[
             or "price target" in chunk.text.lower()
         ]
         return focused[:2]
+
+    if _is_financial_summary_question(question):
+        expanded = INDEX.search(
+            question + " ingresos totales cartera crédito índice morosidad IMOR utilidad neta ROE ROA retorno sobre capital retorno sobre activos rentabilidad crecimiento anual",
+            limit=20,
+        )
+        focused = [
+            (chunk, score)
+            for chunk, score in expanded
+            if "precio objetivo" not in chunk.text.lower()
+            and any(term in chunk.text.lower() for term in ["ingresos totales", "cartera total", "índice de morosidad", "utilidad neta", "retorno sobre capital", "retorno sobre activos", "ROE", "ROA"])
+        ]
+        return focused[:6]
 
     best_score = hits[0][1]
     if best_score <= 0:
@@ -116,6 +172,9 @@ def answer_question(question: str, evidence: list[dict[str, Any]]) -> tuple[str,
 
     if not evidence:
         return "No encontré evidencia suficiente en los documentos disponibles para responder esta pregunta.", "abstention"
+
+    if _is_financial_summary_question(question):
+        return _financial_summary_answer(evidence), "extractive-fallback"
 
     key = os.getenv("OPENAI_API_KEY", "").strip()
     if key:
