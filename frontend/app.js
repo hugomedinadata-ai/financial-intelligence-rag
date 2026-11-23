@@ -109,22 +109,33 @@
 
   const renderResponse = (payload, elapsed) => {
     const answerText = typeof payload.answer === "string" ? payload.answer : "El servicio no devolvió una respuesta legible.";
+    const evidence = Array.isArray(payload.evidence_fragments) ? payload.evidence_fragments : (Array.isArray(payload.sources) ? payload.sources : []);
     const isAbstention = payload.model === "abstention" || /no encontr[eé] evidencia suficiente/i.test(answerText);
+    const confirmsUnavailable = /no publica un precio objetivo|no se encontr[oó] un precio objetivo/i.test(answerText);
+    const hasEvidence = evidence.length > 0;
+    const outcomeTitle = confirmsUnavailable
+      ? "Dato no publicado"
+      : (isAbstention ? (hasEvidence ? "Respuesta no concluyente" : "Evidencia insuficiente") : "Resultado del análisis");
+    const outcomeStatus = confirmsUnavailable
+      ? "Consulta completada · Evidencia encontrada: el dato no está publicado"
+      : (isAbstention
+        ? (hasEvidence ? "Consulta completada · Abstención: la evidencia no permite determinar el dato" : "Consulta completada · No se encontró evidencia suficiente")
+        : "Consulta completada · Evidencia documental disponible");
     lastAnswer = answerText;
     questionContext.textContent = "Consulta: " + question.value.trim();
     answer.textContent = answerText;
-    responseTitle.textContent = isAbstention ? "Evidencia insuficiente" : "Resultado del análisis";
-    responseCard.dataset.kind = isAbstention ? "abstention" : "answer";
+    responseTitle.textContent = outcomeTitle;
+    responseCard.dataset.kind = confirmsUnavailable ? "grounded-abstention" : (isAbstention ? "abstention" : "answer");
     responseCard.hidden = false;
     responseMeta.replaceChildren();
     responseMeta.append(
       makeMeta("Recuperación: " + (payload.retrieval || "BM25")),
-      makeMeta("Generación: " + (payload.model || "No especificada")),
-      makeMeta("Fuentes: " + (Array.isArray(payload.sources) ? payload.sources.length : 0)),
+      makeMeta(confirmsUnavailable ? "Resultado: abstención fundamentada" : "Generación: " + (payload.model || "No especificada")),
+      makeMeta("Fuentes: " + evidence.length),
       makeMeta(elapsed + " ms")
     );
-    renderSources(payload.evidence_fragments || payload.sources || []);
-    setStatus(isAbstention ? "ready" : "ready", isAbstention ? "Consulta completada · El sistema se abstuvo por falta de evidencia" : "Consulta completada · Evidencia documental disponible", elapsed + " ms");
+    renderSources(evidence);
+    setStatus("ready", outcomeStatus, elapsed + " ms");
   };
 
   const checkHealth = async () => {
